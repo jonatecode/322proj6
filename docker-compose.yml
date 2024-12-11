@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo:lastest
+    ports:
+      - "27017:27017"
+    volumes:
+      -  mongo-data:/data/db
+
+  flask_app:
+    build: ./brevets
+    environemnt:
+      - MONGO_URI=mongodb://db:27017
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+  
+  list_api:
+    build:
+      context: ./list_api
+    ports:
+      - "5001:5000"
+
+  php:
+    image: php:apache
+    volumes:
+      - ./client_website:/var/www/html
+    ports:
+      - "8000:80"
+
+volumes:
+  mongo-data:
