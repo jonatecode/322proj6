@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display Items</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap includes javascript and css (must follow jquery) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- moment.js is the JavaScript equivalent of arrow.py -->
+    <script src="/static/js/moment.min.js"></script>
+  </head>
+
+  <link rel="stylesheet" href="/static/css/calc.css" />
+
+  <body>
+    <h1>Open/Close Times</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>BeginDate</th>
+          <th>BeginTime</th>
+          <th>Distance</th>
+          <th>Control (miles)</th>
+          <th>Control (km)</th>
+          <th>Open Time</th>
+          <th>Close Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{ item.begin_date }}</td>
+            <td>{{ item.begin_time }}</td>
+            <td>{{ item.distance }}</td>
+            <td>{{ item.miles }}</td>
+            <td>{{ item.km }}</td>
+            <td>{{ item.open }}</td>
+            <td>{{ item.close }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
